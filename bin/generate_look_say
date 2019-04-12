@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require_relative './../lib/sequence_generator'
+require_relative './../lib/lns_iterator'
+
+seq_length = ARGV[0].to_i
+
+MAX_SEQ_LENGTH = 30
+
+if seq_length > MAX_SEQ_LENGTH
+  raise "to large sequence size: not more than #{MAX_SEQ_LENGTH}"
+end
+
+SequenceGenerator.new.generate(LNSIterator, seq_length).each { |seq| print "#{seq}\n\n" }
